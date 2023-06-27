@@ -42,7 +42,6 @@ CSRF_TRUSTED_ORIGINS =env.list('CSRF_TRUSTED_ORIGINS_DEV')
 #     },
 # }
 
-SITE_ID=1
 
 # Application definition
 DJANGO_APPS = [
@@ -196,6 +195,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
