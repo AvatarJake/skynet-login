@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  #django app
+  backend_login:
+    container_name: skynet_ms_login
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - 8000:8000
+    depends_on:
+      - db_login
+      - redis_login
+  
+ #postgreSQL
+  db_login:
+    image: postgres
+    container_name: django_login_api_postgresql
+    restart: always
+    environment:
+      POSTGRES_DB: skynet_login_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+    ports:
+      - 5432:5432
+    volumes:
+      - .dbdata:/var/lib/postgresql
+  #redis
+  redis_login:
+    image: redis
+    container_name: django_login_api_redis
+    ports:
+      - 6379:6379
+
+#kafka Queue
